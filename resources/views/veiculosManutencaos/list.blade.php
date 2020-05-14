@@ -47,26 +47,26 @@
                                   </th>
                                 </thead>
                                 <tbody>
-                                    @foreach ($veiculos as $ve)
+                                    @foreach ($veiculosManutencaos as $vm)
                                   <tr>
                                     <td>
-                                        {{$ve->id}}
+                                        {{$vm->id}}
                                     </td>
                                     <td>
-                                        {{$ve->modelo}}
+                                        
                                     </td>
                                     <td>
-                                        {{$ve->ano}} 
+                                        
                                     </td>
                                     <td>
-                                        {{$ve->placa}} 
+                                         
                                     </td>
                                     <td>
-                                        {{$ve->marca}}  
+                                        
                                     </td>
                                     <td>
-                                    <a href="{{route('veiculo.edit',['id'=>$ve->id])}}" class="btn-sm btn-sucsess">Editar</a>
-                                    <a href="{{route('veiculo.destroy',['id'=>$ve->id])}}" class="btn-sm btn-danger">Excluir</a>
+                                    <a href="{{route('veiculoManutencaos.edit',['id'=>$vm->id])}}" class="btn-sm btn-sucsess">Editar</a>
+                                    <a href="{{route('veiculoManutencaos.destroy',['id'=>$vm->id])}}" class="btn-sm btn-danger">Excluir</a>
                                     </td>
                                   </tr>
                                   @endforeach
