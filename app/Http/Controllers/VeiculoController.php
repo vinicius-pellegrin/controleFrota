@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Veiculo;
 use App\pneu;
-use App\Http\Requests\VeiculoREquest;
+use App\Http\Requests\VeiculoRequest;
 
 class VeiculoController extends Controller
 {

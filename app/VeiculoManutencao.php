@@ -7,4 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class VeiculoManutencao extends Model
 {
     //
+    protected $fillable = [
+    'veiculo_id',
+    'manutencao_id',
+    'kmInicioManutencao',
+    'kmInRetornoManutencao',
+    'dataInicioManutencao',
+    'dataRetronoManutencao',
+    'descricao',
+   // 'status'
+
+];
+    
 }

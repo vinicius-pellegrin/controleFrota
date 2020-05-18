@@ -16,6 +16,15 @@
         </div>
 
         <div class="container-fluid">
+          <div class="row">
+
+            @if ($pageSlug ?? '' == 'veiculos') class="active " @endif>
+                <a href="{{ route('veiculo.create') }}">
+                    <i class="tim-icons icon-chart-pie-36"></i>
+                    <p>{{ __('cadatro de Veiculos') }}</p>
+                </a>
+
+          </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">

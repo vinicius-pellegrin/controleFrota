@@ -30,7 +30,7 @@
                             @endif
 
                            
-              {!! Form::open(['route'=>'veiculo.store']) !!}
+              {!! Form::open(['route'=>'veiculoManutencao.store']) !!}
                            
                                <!--inicio do card-->
                                <div class="card-body">
@@ -42,97 +42,90 @@
                                      
        
                                  <div class="row">
-                                   <div class="col-md-4">
-                     
-                                     <div class="form-group{{ $errors->has('veiculo') ? ' has-danger' : '' }}">
-                                      {!! Form::label('modelo', 'Modelo do Veiculo') !!}
-                                        {!! Form::text('modelo', null, ['class'=>'form-control', 'placeholder'=>'veiculo']) !!}                                        
-                                         @include('alerts.feedback', ['field' => 'veiculo'])
+
+                                  <div class="col-md-4">
+                                    <div class="form-group{{ $errors->has('veiculo') ? ' has-danger' : '' }}"> 
+                                                                         
+                                      {!! Form::label('veiculo', 'Veiculo') !!}
+                                      {!! Form::select('veiculo_id',\App\Veiculo::orderby('id')->pluck('modelo','id')->toArray(),null,
+                                      ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Selecione o Veiculo','data-toggle'=>'dropdown'])!!}
+                                     @include('alerts.feedback', ['field' => 'veiculo'])
+                                     
+                                     </div>
+
+                                  
+                                    <div class="form-group{{ $errors->has('manutencao') ? ' has-danger' : '' }}"> 
+                                                                         
+                                      {!! Form::label('manutencao', 'Manutenção') !!}
+                                      {!! Form::select('manutencao_id',\App\Manutencao::orderby('id')->pluck('descricao','id')->toArray(),null,
+                                      ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Tipo de Manutencao','data-toggle'=>'dropdown'])!!}
+                                     @include('alerts.feedback', ['field' => 'manutencao'])
+                                     
                                      </div>
        
                                    </div>
 
-                                   <div class="col-md-2">
+                                   <div class="col-md-4">
                      
-                                    <div class="form-group{{ $errors->has('veiculo') ? ' has-danger' : '' }}">
-                                     {!! Form::label('ano', 'Ano do Veiculo') !!}
-                                       {!! Form::text('ano', null, ['class'=>'form-control', 'placeholder'=>'veiculo']) !!}                                        
-                                        @include('alerts.feedback', ['field' => 'veiculo'])
+                                    <div class="form-group{{ $errors->has('km_inicioManutencao') ? ' has-danger' : '' }}">
+                                     {!! Form::label('kmInicioManutencao', 'KM Inicial Manutencao') !!}
+                                       {!! Form::number('kmInicioManutencao', null, ['class'=>'form-control', 'placeholder'=>'km saida para manutenção']) !!}                                        
+                                        @include('alerts.feedback', ['field' => 'km_inicioManutencao'])
                                     </div>
       
                                   </div>
                                   
                                    <div class="col-sm-">
-                                     <div class="form-group{{ $errors->has('placa') ? ' has-danger' : '' }}">
-                                      {!! Form::label('placa', 'Placa') !!}  
-                                      {!! Form::text('placa', null, ['class'=>'form-control', 'placeholder'=>'Placa do Veículo']) !!}
-                                         @include('alerts.feedback', ['field' => 'placa'])
+                                     <div class="form-group{{ $errors->has('km_retorno') ? ' has-danger' : '' }}">
+                                      {!! Form::label('kmRetornoManutencao', 'KM Retrono Manutenção') !!}  
+                                      {!! Form::number('kmRetornoManutencao', null, ['class'=>'form-control', 'placeholder'=>'km ao retornar']) !!}
+                                         @include('alerts.feedback', ['field' => 'km_retorno'])
                                      </div>
                                    </div>
                      
-                                   <div class="col-md-2">
+                                   <div class="col-md-4">
                      
-                                      <div class="form-group{{ $errors->has('marca') ? ' has-danger' : '' }}">
-                                        {!! Form::label('marca', 'Marca')!!}
-                                          {!! Form::text('marca', null, ['class'=>'form-control', 'placeholder'=>'Maca do Veiculo']) !!}
-                                          @include('alerts.feedback', ['field' => 'marca'])
+                                      <div class="form-group{{ $errors->has('dataInicioManutencao') ? ' has-danger' : '' }}">
+                                        {!! Form::label('dataInicioManutencao', 'Data saida para manutencao')!!}
+                                          {!! Form::Date('dataInicioManutencao', null, ['class'=>'form-control', 'placeholder'=>'Date de hoje']) !!}
+                                          @include('alerts.feedback', ['field' => 'dataInicioManutencao'])
                                       </div>
                                   </div> 
     
-                                   <div class="col-md-2">                     
-                                      <div class="form-group{{ $errors->has('ocupantes') ? ' has-danger' : '' }}">
-                                        {!! Form::label('ocupantes', 'Ocupantes') !!}  
-                                          {!! Form::number('ocupantes', null, ['class'=>'form-control', 'placeholder'=>'Numero de Ocupantes']) !!}
-                                          @include('alerts.feedback', ['field' => 'name'])
+                                   <div class="col-md-4">                     
+                                      <div class="form-group{{ $errors->has('dataRetornoManutencao') ? ' has-danger' : '' }}">
+                                        {!! Form::label('dataRetornoManutencao', 'Data de Retrono') !!}  
+                                          {!! Form::Date('dataRetronoManutencao', null, ['class'=>'form-control', 'placeholder'=>'Data de Retrono da manuytencão']) !!}
+                                          @include('alerts.feedback', ['field' => 'dataRetornoManutencao'])
                                       </div>
                                   </div>                                   
                                 </div>
                               
                      
                                 <div class="row">    
-                                  <div class="col-md-4">
-                                    <div class="form-group{{ $errors->has('tipoVeiculo') ? ' has-danger' : '' }}">                                    
-                                      {!! Form::label('tipoVeiculo', 'Tipo Veiculo') !!}
-                                     
-                                    {!! Form::select('tipoVeiculo_id',\App\TipoVeiculo::orderBy('id')->pluck('descricao','id')->toArray(),null,
-                                     ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Tipo Veículo','data-toggle'=>'dropdown'])!!}
-                                     @include('alerts.feedback', ['field' => 'tipoVeiculo'])
-                                     
-                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group{{ $errors->has('descricao') ? ' has-danger' : '' }}">
+                                      {!! Form::label('descricao', 'Descricao do que sera feito no veiculo') !!}  
+                                        {!! Form::textarea('descricao', null, ['class'=>'form-control', 'placeholder'=>'Descreca o que sera feito no veiculo', 'rows'=>'10']) !!}
+                                        @include('alerts.feedback', ['field' => 'descricao'])
+                                    </div>
                                 </div>   
                                    
                                  <div class="col-md-4">
-                                     <div class="form-group{{ $errors->has('combustivel') ? ' has-danger' : '' }}">                                    
-                                         {!! Form::label('combustivel', 'Combustivel') !!}
-                                         {!! Form::select('combustivel_id',\App\Combustivel::orderby('id')->pluck('descricao','id')->toArray(),null,
-                                         ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Tipo Veículo','data-toggle'=>'dropdown'])!!}
-                                          @include('alerts.feedback', ['field' => 'tipoVeiculo'])
-                                       
-                                     </div>
-                                  </div> 
-                     
-                                          
-                                    <div class="col-md-4">
-                                      <div class="form-group{{ $errors->has('pneu') ? ' has-danger' : '' }}"> 
-                                                                           
-                                        {!! Form::label('pneu', 'Pneu') !!}
-                                        {!! Form::select('pneu_id',\App\Pneu::orderby('id')->pluck('largura','id')->toArray(),null,
-                                        ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Tipo Veículo','data-toggle'=>'dropdown'])!!}
-                                      
-                                       @include('alerts.feedback', ['field' => 'pneu'])
-                                       
-                                    </div>
+                                     
+                                 
+                    
                                     <div class="col-sm">
                                       <div class="form-group">
                                        {!! Form::label('status', 'Satatus') !!} 
                                           
-                                       {!! Form::text('status','A',['class'=>'form-control', 'placeholder'=>'Placa do Veículo','hidden']) !!}
+                                       {!! Form::text('status','A',['class'=>'form-control', 'placeholder'=>'status']) !!}
                                           
                                       </div>
                                     </div>
                                   </div> 
                                  
-                                </div>         
+                                        
                                 <div class="text-center">
                                   {!! Form::submit('Salvar', ['type'=>'submit', 'class'=>'btn btn-info btn-fill float-center']) !!}
                                   <!--<base-button round type="submit" class="btn btn-info btn-fill float-center" @click.prevent="updateProfile">

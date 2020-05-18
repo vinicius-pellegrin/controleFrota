@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Pneu;
 use\App\Veiculo;
 use\App\VeiculoManutencao;
+use App\Http\Requests\VeiculoManutencaoRequest;
+//use App\Http\Requests\VeiculoRequest;
+
+
 class VeiculoManutencaoController extends Controller
 {
     //
@@ -25,7 +29,7 @@ class VeiculoManutencaoController extends Controller
     public function edit($id)
     {
         $veiculoManutencao = VeiculoManutencao::find($id);
-        return view('veiculosManutencaos.edit',compact('veiculomanutencao'));
+        return view('veiculosManutencaos.edit',compact('veiculoManutencao'));
         //return view('dashboard');
     }
     public function create()
@@ -36,16 +40,24 @@ class VeiculoManutencaoController extends Controller
     }
     public function store(VeiculoManutencaoRequest $request)
     {
+        
         $novoVeiculoManutencao = $request->all();
-        Veiculo::create($novoVeiculoManutencao);
-        return redirect('veiculosmanutencaos.list');
+        VeiculoManutencao::create($novoVeiculoManutencao);
+        return redirect('veiculoManutencao/list');
         //return view('veiculos.edit');
         //return view('dashboard');
     }
+    public function atualizaStatus(){
+        //aqui deveremos atualizar o ststus do veiculo conforme sua manutencao
+
+        $status = Veiculo::update(['status'=>$request->get('status'),]);
+    }
+
     public function list()
     {
+         
         $veiculosManutencaos = VeiculoManutencao::all();
-        return view('veiculosManutencaos.list',['veiculosmanutencaos'=>$veiculosManutencaos]);
+        return view('veiculosManutencaos.list',['veiculosManutencaos'=>$veiculosManutencaos]);
         //return view('dashboard');
     }
 
@@ -56,10 +68,12 @@ class VeiculoManutencaoController extends Controller
         //return view('dashboard');
     }
 
+
+
     public function update(VeiculoManutencaoRequest $request, $id)
     {
         $veiculoManutencao = VeiculoManutencao::find($id)->update($request->all());
-        return redirect('veiculosManutencaos.list');
+        return redirect('veiculoManutencaos.list');
         //return view('veiculos.edit');
         //return view('dashboard');
     }

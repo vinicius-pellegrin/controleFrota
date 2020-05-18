@@ -85,7 +85,17 @@
                                           {!! Form::number('ocupantes', null, ['class'=>'form-control', 'placeholder'=>'Numero de Ocupantes']) !!}
                                           @include('alerts.feedback', ['field' => 'name'])
                                       </div>
-                                  </div>                                   
+                                  </div>  
+
+                                  <div class="col-md-2">                     
+                                    <div class="form-group{{ $errors->has('Kolomentragem') ? ' has-danger' : '' }}">
+                                      {!! Form::label('km_inicial', 'Kilomentragem') !!}  
+                                        {!! Form::number('km_inicial', null, ['class'=>'form-control', 'placeholder'=>'km do veiculo']) !!}
+                                        @include('alerts.feedback', ['field' => 'name'])
+                                    </div>
+                                </div>      
+                                  
+
                                 </div>
                               
                      
@@ -138,7 +148,11 @@
                                   <!--<base-button round type="submit" class="btn btn-info btn-fill float-center" @click.prevent="updateProfile">
                                     Salvar
                                   </base-button>-->
-                                  {!! Form::submit('Cancelar', ['type'=>'submit', 'class'=>'btn btn-danger btn-fill float-center']) !!}
+                                  <a href="{{ route('veiculo.index') }}">
+                                    <i class="btn btn-danger btn-fill float-center "><p >{{ __('Cancelar') }}</p></i>
+                                    
+                                </a>
+                                  
                                   <!--<button type="danger" class="btn btn-fill btn-danger float-center" @click.prevent="updateProfile">
                                     Cancelar
                                   </button>-->

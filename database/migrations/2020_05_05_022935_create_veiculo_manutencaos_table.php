@@ -16,6 +16,17 @@ class CreateVeiculoManutencaosTable extends Migration
         Schema::create('veiculo_manutencaos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('manutencao_id');
+            $table->foreign('manutencao_id')->references('id')->on('manutencaos');
+            $table->integer('veiculo_id');
+            $table->foreign('veiculo_id')->references('id')->on('veiculos');
+            $table->Date('dataInicioManutencao');
+            $table->Date('dataRetronoManutencao')->nullable();
+            $table->integer('kmRetornoManutencao')->nullable();
+            $table->string('descricao',500);
+            
+
+
         });
     }
 
