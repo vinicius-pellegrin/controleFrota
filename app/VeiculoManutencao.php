@@ -8,15 +8,19 @@ class VeiculoManutencao extends Model
 {
     //
     protected $fillable = [
-    'veiculo_id',
+    'veiculo',
     'manutencao_id',
     'kmInicioManutencao',
     'kmInRetornoManutencao',
     'dataInicioManutencao',
     'dataRetronoManutencao',
     'descricao',
-   // 'status'
+   //'status'
 
 ];
+public function veiculo(){
+
+    return $this->belongsTo('App\Veiculo');
+}
     
 }

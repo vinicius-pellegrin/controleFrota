@@ -43,6 +43,10 @@ class VeiculoManutencaoController extends Controller
         
         $novoVeiculoManutencao = $request->all();
         VeiculoManutencao::create($novoVeiculoManutencao);
+        
+        $veiculo = Veiculo::find($veiculo_id);
+        $novoVeiculoManutencao->veiculo->associate($veiculo);
+        
         return redirect('veiculoManutencao/list');
         //return view('veiculos.edit');
         //return view('dashboard');
