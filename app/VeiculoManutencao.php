@@ -8,7 +8,7 @@ class VeiculoManutencao extends Model
 {
     //
     protected $fillable = [
-    'veiculo',
+    'veiculo_id',
     'manutencao_id',
     'kmInicioManutencao',
     'kmInRetornoManutencao',

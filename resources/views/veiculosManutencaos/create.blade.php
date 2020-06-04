@@ -115,23 +115,32 @@
                                      
                                  
                     
+                                   
                                     <div class="col-sm">
-                                      <div class="form-group">
-                                       {!! Form::label('status', 'Satatus') !!} 
-                                          
-                                       {!! Form::text('status','A',['class'=>'form-control', 'placeholder'=>'status']) !!}
-                                          
-                                      </div>
-                                    </div>
-                                  </div> 
-                                 
+                                      <div class="form-group{{ $errors->has('veiculo') ? ' has-danger' : '' }}"> 
+                                                                           
+                                        {!! Form::label('status', 'Satatus') !!} 
                                         
+                                        {!! Form::text('status', null, ['class'=>'form-control', 'placeholder'=>'status da manutencão']) !!}
+                                        
+                                       @include('alerts.feedback', ['field' => 'status'])
+                                       
+                                       </div>
+
+
+
+                                  </div> 
+                                 </div>
                                 <div class="text-center">
                                   {!! Form::submit('Salvar', ['type'=>'submit', 'class'=>'btn btn-info btn-fill float-center']) !!}
                                   <!--<base-button round type="submit" class="btn btn-info btn-fill float-center" @click.prevent="updateProfile">
                                     Salvar
                                   </base-button>-->
-                                  {!! Form::submit('Cancelar', ['type'=>'submit', 'class'=>'btn btn-danger btn-fill float-center']) !!}
+                                  <a href="{{ route('veiculoManutencao.index') }}">
+                                    <i class="btn btn-danger btn-fill float-center "><p >{{ __('Cancelar') }}</p></i>
+                                    
+                                </a>
+                                  
                                   <!--<button type="danger" class="btn btn-fill btn-danger float-center" @click.prevent="updateProfile">
                                     Cancelar
                                   </button>-->

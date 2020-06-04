@@ -3,17 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Iluminate\Database\Eloquent;
 use App\Pneu;
 use\App\Veiculo;
 use\App\VeiculoManutencao;
 use App\Http\Requests\VeiculoManutencaoRequest;
-//use App\Http\Requests\VeiculoRequest;
+use App\Http\Requests\VeiculoRequest;
 
 
 class VeiculoManutencaoController extends Controller
 {
-    //
-  
+    private  $veiculoManutencao;
+    //contrutor
+    
+  public function __construct(veiculoManutencao $veiculoManutencao){
+      $this->veiculoManutencao = $veiculoManutencao;
+  }
 
     public function index()
     {
@@ -43,18 +48,25 @@ class VeiculoManutencaoController extends Controller
         
         $novoVeiculoManutencao = $request->all();
         VeiculoManutencao::create($novoVeiculoManutencao);
+        //atualizaStatus($novoVeiculoManutencao->veiculo_id, $novoVeiculoManutencao->status);
         
-        $veiculo = Veiculo::find($veiculo_id);
-        $novoVeiculoManutencao->veiculo->associate($veiculo);
-        
+        //$veiculo = $request->veiculo_id;
+        //$status = $request->status;
+        Veiculo::find($request->veiculo_id)->update(['status'=>$request->status]);
+
+        //Veiculo::update($veiculo,$novoVeiculoManutencao->status);
+        //Veiculo::update(['id'=>$request->veiculo_id,'status'=>$request->status]);   
         return redirect('veiculoManutencao/list');
         //return view('veiculos.edit');
+        
         //return view('dashboard');
     }
-    public function atualizaStatus(){
+    public function atualizaStatus($id, $status){
         //aqui deveremos atualizar o ststus do veiculo conforme sua manutencao
+        Veiculo::find($id)->update($status->all('status'));   
 
-        $status = Veiculo::update(['status'=>$request->get('status'),]);
+
+        //$status = Veiculo::update(['status'=>$atualiza->get($request->'status'),]);
     }
 
     public function list()
