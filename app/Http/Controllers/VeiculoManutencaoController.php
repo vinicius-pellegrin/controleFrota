@@ -61,6 +61,8 @@ class VeiculoManutencaoController extends Controller
         
         //return view('dashboard');
     }
+
+    //função não usada
     public function atualizaStatus($id, $status){
         //aqui deveremos atualizar o ststus do veiculo conforme sua manutencao
         Veiculo::find($id)->update($status->all('status'));   
@@ -80,7 +82,7 @@ class VeiculoManutencaoController extends Controller
     public function destroy($id)
     {
         VeiculoManutencao::find($id)->delete();
-        return redirect('veiculosManutencaos.list');
+        return redirect('veiculoManutencao/list');
         //return view('dashboard');
     }
 
