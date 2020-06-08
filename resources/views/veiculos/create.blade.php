@@ -28,8 +28,12 @@
                             </ul>
                                 
                             @endif
+                            @yield('conteudo')
 
-                           
+                            <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+                            <script type="text/javascript" src="{{ asset('js/mask.js') }}"></script>
+                            @yield('scripts')
+                            @section('conteudo')        
               {!! Form::open(['route'=>'veiculo.store']) !!}
                            
                                <!--inicio do card-->
@@ -161,7 +165,15 @@
                                 </div> <!--inicio do card-->
                              
                              {!! Form::close() !!}
+                             @endsection()
                           </div>
+                          @section('scripts')
+    <script>
+        $(document).ready(function(){
+            $('#placa').mask('999-9999');
+        });
+    </script>
+@endsection
                       </div>
                   </div>
               </div>

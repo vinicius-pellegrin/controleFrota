@@ -44,7 +44,7 @@
           veiculos disponiveis
         </div>
         <div class="card-body">
-          quantidade
+          {{ $disponivel}}
         </div>
       </div>  
     </div>
@@ -52,9 +52,11 @@
       <div class="card">
         <div class="card-header">
           Veiculos em Manutenção
+         
         </div>
         <div class="card-body">
-          Quantidade vinda do banco
+          Quantidade vinda do banco <br>
+          {{ $emManutencao}}
         </div>
       </div>  
     </div>
@@ -78,8 +80,8 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title ">Simple Table</h4>
-            <p class="card-category"> Here is a subtitle for this table</p>
+            <h4 class="card-title ">Veiculos Cadastrados</h4>
+            <p class="card-category"> lista de Veiculos Cadastrados</p>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -98,19 +100,22 @@
                     Status
                   </th>
                   <th>
-                    Salary
+                    ---
                   </th>
                 </thead>
                 <tbody>
+                  @foreach ($veiculos as $ve)
+                      
+                  
                   <tr>
                     <td>
-                      1
+                      {{$ve->id}}
                     </td>
                     <td>
-                      Dakota Rice
+                      {{$ve->modelo}}
                     </td>
                     <td>
-                      Niger
+                      {{$ve->placa}}
                     </td>
                     <td>
                       Oud-Turnhout
@@ -119,6 +124,7 @@
                       $36,738
                     </td>
                   </tr>
+                  @endforeach
                   
                 </tbody>
               </table>
