@@ -37,10 +37,10 @@ class VeiculoManutencaoController extends Controller
         return view('veiculosManutencaos.edit',compact('veiculoManutencao'));
         //return view('dashboard');
     }
-    public function create()
+    public function create($veiculo_id)
     {
-        
-        return view('veiculosManutencaos.create');
+        $veiculo_id = $veiculo_id;
+        return view('veiculosManutencaos.create',['veiculo_id'=>$veiculo_id]);
         //return view('dashboard');
     }
     public function store(VeiculoManutencaoRequest $request)

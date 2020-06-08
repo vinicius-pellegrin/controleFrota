@@ -60,7 +60,7 @@ Route::group(['prefix'=>'veiculoManutencao', 'middleware' => 'auth'], function (
 	Route::get('', ['as' => 'veiculoManutencao.index', 'uses' => 'VeiculoManutencaoController@index']);
 	Route::get('{id}/edit', ['as' => 'veiculoManutencao.edit', 'uses' => 'VeiculoManutencaoController@edit']);
 	Route::get('list', ['as' => 'veiculoManutencao.list', 'uses' => 'VeiculoManutencaoController@list']);
-	Route::get('create', ['as' => 'veiculoManutencao.create', 'uses' => 'VeiculoManutencaoController@create']);
+	Route::get('{veiculo_id}/create', ['as' => 'veiculoManutencao.create', 'uses' => 'VeiculoManutencaoController@create']);
 	Route::post('store', ['as' => 'veiculoManutencao.store', 'uses' => 'VeiculoManutencaoController@store']);
 	Route::get('{id}/destroy',['as' => 'veiculoManutencao.destroy', 'uses' => 'VeiculoManutencaoController@destroy']);
 	Route::put('{id}/update',['as' => 'veiculoManutencao.update', 'uses' => 'VeiculoManutencaoController@update']);

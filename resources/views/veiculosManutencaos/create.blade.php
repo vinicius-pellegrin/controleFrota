@@ -46,8 +46,8 @@
                                   <div class="col-md-4">
                                     <div class="form-group{{ $errors->has('veiculo') ? ' has-danger' : '' }}"> 
                                                                          
-                                      {!! Form::label('veiculo', 'Veiculo') !!}
-                                      {!! Form::select('veiculo_id',\App\Veiculo::orderby('id')->pluck('modelo','id')->toArray(),null,
+                                      {!! Form::label('veiculo', 'Veiculo') !!}   
+                                      {!! Form::select('veiculo_id',\App\Veiculo::orderby('id')->pluck('modelo','id')->toArray(),$veiculo_id,
                                       ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Selecione o Veiculo','data-toggle'=>'dropdown'])!!}
                                      @include('alerts.feedback', ['field' => 'veiculo'])
                                      
@@ -69,7 +69,7 @@
                      
                                     <div class="form-group{{ $errors->has('km_inicioManutencao') ? ' has-danger' : '' }}">
                                      {!! Form::label('kmInicioManutencao', 'KM Inicial Manutencao') !!}
-                                       {!! Form::number('kmInicioManutencao', null, ['class'=>'form-control', 'placeholder'=>'km saida para manutenção']) !!}                                        
+                                       {!! Form::number('kmInicioManutencao', null, ['class'=>'form-control', 'placeholder'=>'km saida para manutenção']) !!}
                                         @include('alerts.feedback', ['field' => 'km_inicioManutencao'])
                                     </div>
       

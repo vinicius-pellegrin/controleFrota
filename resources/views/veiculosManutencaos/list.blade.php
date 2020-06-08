@@ -27,9 +27,7 @@
                             <div class="table-responsive">
                               <table class="table">
                                 <thead class=" text-primary">
-                                  <th>
-                                    ID
-                                  </th>
+                                  
                                   <th>
                                     veiculo
                                   </th>
@@ -58,9 +56,6 @@
                                     @foreach ($veiculosManutencaos as $vm)
             
                                   <tr>
-                                    <td>
-                                        {{$vm->id}}
-                                    </td>
                                     <td>  
                                          {{$vm->veiculo_id}}                              
                                       

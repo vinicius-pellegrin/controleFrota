@@ -76,6 +76,8 @@
                                     <td>
                                     <a href="{{route('veiculo.edit',['id'=>$ve->id])}}" class="btn-sm btn-sucsess">Editar</a>
                                     <a href="{{route('veiculo.destroy',['id'=>$ve->id])}}" class="btn-sm btn-danger">Excluir</a>
+                                    <a href="{{route('veiculoManutencao.create',['veiculo_id'=>$ve->id])}}" class="btn-sm btn-sucsess">enviar manutenção</a>
+                                    <a href="{{route('veiculoManutencao.destroy',['id'=>$ve->id])}}" class="btn-sm btn-danger">Retorno manutenção</a>
                                     </td>
                                   </tr>
                                   @endforeach
