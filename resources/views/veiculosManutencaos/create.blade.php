@@ -29,7 +29,7 @@
                                 
                             @endif
 
-                           
+                                    
               {!! Form::open(['route'=>'veiculoManutencao.store']) !!}
                            
                                <!--inicio do card-->
@@ -48,7 +48,7 @@
                                                                          
                                       {!! Form::label('veiculo', 'Veiculo') !!}   
                                       {!! Form::select('veiculo_id',\App\Veiculo::orderby('id')->pluck('modelo','id')->toArray(),$veiculo_id,
-                                      ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Selecione o Veiculo','data-toggle'=>'dropdown'])!!}
+                                      ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Selecione o Veiculo'])!!}
                                      @include('alerts.feedback', ['field' => 'veiculo'])
                                      
                                      </div>
@@ -92,7 +92,7 @@
                                       </div>
                                   </div> 
     
-                                   <div class="col-md-4">                     
+                                   <div class="col-md-4" id='dataRetorno'  >                     
                                       <div class="form-group{{ $errors->has('dataRetornoManutencao') ? ' has-danger' : '' }}">
                                         {!! Form::label('dataRetornoManutencao', 'Data de Retrono') !!}  
                                           {!! Form::Date('dataRetronoManutencao', null, ['class'=>'form-control', 'placeholder'=>'Data de Retrono da manuytencão']) !!}
@@ -117,14 +117,19 @@
                     
                                    
                                     <div class="col-sm">
+                                      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                                       <div class="form-group{{ $errors->has('veiculo') ? ' has-danger' : '' }}"> 
                                                                            
                                         {!! Form::label('status', 'Satatus') !!} 
                                         
                                         {!! Form::text('status', null, ['class'=>'form-control', 'placeholder'=>'status da manutencão']) !!}
                                         
+                                        {!! Form::select('status',array ('M'=>'Em manutenção','P'=>'Disponivel'),null,
+                                      ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Tipo de Manutencao','data-toggle'=>'dropdown'])!!}
+
+
                                        @include('alerts.feedback', ['field' => 'status'])
-                                       
+                                      
                                        </div>
 
 
@@ -156,3 +161,21 @@
         </div>
    </div>
 @endsection
+
+<script>
+  
+
+  $(document).ready(function(){
+    $("#status").on("click",function(){
+      if($(this).select("M")){
+        $("#dataRetorno").prop("disabled",true);
+      }
+      else{
+        $("#status").prop("disabled",false);
+      }
+    });
+  });
+
+
+
+</script>

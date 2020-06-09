@@ -29,6 +29,14 @@
 
                     <div class="content">
                         @yield('content')
+                    
+
+                        
+                        @yield('scripts')
+
+
+
+
                     </div>
 
                     @include('layouts.footer')
@@ -101,6 +109,8 @@
 
         <script src="{{ asset('black') }}/js/black-dashboard.min.js?v=1.0.0"></script>
         <script src="{{ asset('black') }}/js/theme.js"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/mask.js') }}"></script>
 
         @stack('js')
 

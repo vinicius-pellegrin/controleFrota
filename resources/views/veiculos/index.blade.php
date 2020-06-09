@@ -1,20 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="header py-7 py-lg-8">
-        <div class="container">
-            <div class="header-body text-center mb-7">
-                <div class="row justify-content-center">
-                    <div class="col-lg-5 col-md-6">
-                        <h1 class="text-white">{{ __('Welcome!') }}</h1>
-                        <p class="text-lead text-light">
-                            {{ __('Use Black Dashboard theme to create a great project.') }}
-                        </p>
-                    </div>
-                </div>
-            </div>            
-        </div>
-    </div>
+        <div class="header py-7 py-lg-8">
+             <div class="container">
+                 <div class="header-body text-center mb-7">
+                     <div class="row justify-content-center">
+                        <div class="col-lg-5 col-md-6">
+                            <h1 class="text-white">{{ __('Welcome!') }}</h1>
+                            <p class="text-lead text-light">
+                                {{ __('Use Black Dashboard theme to create a great project.') }}
+                            </p>
+                        </div>
+                     </div>
+                 </div>            
+             </div>
+         </div>
 <div class="container">
   <div class="row">
 
@@ -132,11 +132,14 @@
           </div>
         </div>
       </div>
-      <div class="col-md-12">
-        <div class="card card-plain">
-          <div class="card-header card-header-primary">
-            <h4 class="card-title mt-0"> Table on Plain Background</h4>
-            <p class="card-category"> Here is a subtitle for this table</p>
-          </div>
-        </div>
+           <div class="col-md-12">
+               <div class="card card-plain">
+                   <div class="card-header card-header-primary">
+                     <h4 class="card-title mt-0"> Table on Plain Background</h4>
+                     <p class="card-category"> Here is a subtitle for this table</p>
+                   </div>
+               </div>
+            </div>
+    </div>
+</div>
 @endsection

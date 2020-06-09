@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+
+
+
 @section('content')
    <div class="header py-7 py-lg-8">
        <div class="container">
@@ -28,14 +31,10 @@
                             </ul>
                                 
                             @endif
-                            @yield('conteudo')
-
-                            <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
-                            <script type="text/javascript" src="{{ asset('js/mask.js') }}"></script>
-                            @yield('scripts')
-                            @section('conteudo')        
+                                  
               {!! Form::open(['route'=>'veiculo.store']) !!}
-                           
+                                              
+         
                                <!--inicio do card-->
                                <div class="card-body">
                                      @csrf
@@ -69,7 +68,7 @@
                                    <div class="col-sm-">
                                      <div class="form-group{{ $errors->has('placa') ? ' has-danger' : '' }}">
                                       {!! Form::label('placa', 'Placa') !!}  
-                                      {!! Form::text('placa', null, ['class'=>'form-control', 'placeholder'=>'Placa do Veículo']) !!}
+                                      {!! Form::text('placa', null, ['class'=>'form-control', 'placeholder'=>'Placa do Veículo', 'maxlength'=>'7']) !!}
                                          @include('alerts.feedback', ['field' => 'placa'])
                                      </div>
                                    </div>
@@ -163,20 +162,23 @@
                             </div>
                                 <div class="clearfix"></div>
                                 </div> <!--inicio do card-->
-                             
+          
+
                              {!! Form::close() !!}
-                             @endsection()
+                             
                           </div>
-                          @section('scripts')
-    <script>
-        $(document).ready(function(){
-            $('#placa').mask('999-9999');
-        });
-    </script>
-@endsection
+                         
                       </div>
                   </div>
               </div>
         </div>
    </div>
+@endsection
+@section('scripts')
+<script>
+  
+    $(document).ready(function(){
+        $('#placa').mask('999-9999');
+    });
+</script>
 @endsection
