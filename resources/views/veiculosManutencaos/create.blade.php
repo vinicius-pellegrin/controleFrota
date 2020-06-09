@@ -125,7 +125,7 @@
                                         {!! Form::text('status', null, ['class'=>'form-control', 'placeholder'=>'status da manutencão']) !!}
                                         
                                         {!! Form::select('status',array ('M'=>'Em manutenção','P'=>'Disponivel'),null,
-                                      ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Tipo de Manutencao','data-toggle'=>'dropdown'])!!}
+                                      ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Tipo de Manutencao','data-toggle'=>'dropdown', 'id'=>'status'])!!}
 
 
                                        @include('alerts.feedback', ['field' => 'status'])
@@ -164,6 +164,10 @@
 
 <script>
   
+  $('#status').on('select', function(){
+    $('#dataRetorno').prop('disabled', !this.value);
+});
+  
 
   $(document).ready(function(){
     $("#status").on("click",function(){
@@ -175,6 +179,20 @@
       }
     });
   });
+
+
+  $("#adicionar").click(function(){
+	alert("Estou habilitado!");
+});
+
+$(document).ready(function(){
+$('#categoria').change(function() {
+if ($('#categoria').val() == 'teste') {
+$('#adicionar').show();
+}else if($('#categoria').val() == 'teste2'){
+$('#adicionar').hide();
+}
+})
 
 
 
