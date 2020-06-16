@@ -92,10 +92,10 @@
                                       </div>
                                   </div> 
     
-                                   <div class="col-md-4" id='dataRetorno'  >                     
+                                   <div class="col-md-4" id='dataRetorno' >                     
                                       <div class="form-group{{ $errors->has('dataRetornoManutencao') ? ' has-danger' : '' }}">
                                         {!! Form::label('dataRetornoManutencao', 'Data de Retrono') !!}  
-                                          {!! Form::Date('dataRetronoManutencao', null, ['class'=>'form-control', 'placeholder'=>'Data de Retrono da manuytencão']) !!}
+                                          {!! Form::Date('dataRetronoManutencao', null, ['class'=>'form-control', 'placeholder'=>'Data de Retrono da manuytencão', 'id'=>'dataRetorno']) !!}
                                           @include('alerts.feedback', ['field' => 'dataRetornoManutencao'])
                                       </div>
                                   </div>                                   
@@ -117,21 +117,21 @@
                     
                                    
                                     <div class="col-sm">
-                                      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                                      
                                       <div class="form-group{{ $errors->has('veiculo') ? ' has-danger' : '' }}"> 
                                                                            
-                                        {!! Form::label('status', 'Satatus') !!} 
+                                        {!! Form::label('status', 'Status') !!} 
                                         
-                                        {!! Form::text('status', null, ['class'=>'form-control', 'placeholder'=>'status da manutencão']) !!}
+                                       
                                         
-                                        {!! Form::select('status',array ('M'=>'Em manutenção','P'=>'Disponivel'),null,
-                                      ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Tipo de Manutencao','data-toggle'=>'dropdown', 'id'=>'status'])!!}
+                                        {!! Form::select('status',array ('M'=>'Em manutenção','P'=>'Disponivel'),'P',
+                                      ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Tipo de Manutencao','data-toggle'=>'dropdown'])!!}
 
 
                                        @include('alerts.feedback', ['field' => 'status'])
                                       
                                        </div>
-
+                                       
 
 
                                   </div> 
@@ -155,6 +155,11 @@
                              
                              {!! Form::close() !!}
                           </div>
+                          <select id= 'teste'>                                      
+                            <option id = 'option1'>option1</option>
+                            <option id = 'option2'>option2 </option>
+                          </select>
+
                       </div>
                   </div>
               </div>
@@ -164,35 +169,30 @@
 
 <script>
   
-  $('#status').on('select', function(){
-    $('#dataRetorno').prop('disabled', !this.value);
-});
-  
+ 
 
-  $(document).ready(function(){
-    $("#status").on("click",function(){
-      if($(this).select("M")){
-        $("#dataRetorno").prop("disabled",true);
-      }
-      else{
-        $("#status").prop("disabled",false);
-      }
-    });
-  });
-
-
-  $("#adicionar").click(function(){
+ /* $("#status").click(function(){
 	alert("Estou habilitado!");
 });
 
-$(document).ready(function(){
-$('#categoria').change(function() {
-if ($('#categoria').val() == 'teste') {
-$('#adicionar').show();
-}else if($('#categoria').val() == 'teste2'){
-$('#adicionar').hide();
-}
-})
+/*$(document).ready(function(){
+    $('#status').change(function() {
+      //$status = 
+      
+        if ($('#status').select(getSelection) == 'P') {
+              $('dataRetorno').show();
+        }else if($('#status').select(getSelection) == 'M'){
+              $('dataRetorno').hide();
+          }
+      });
+});
+console.log(getSelection);
+*/
+//var select = document.getElementById('teste');
+	//var value = select.options[select.selectedIndex].value;
+  $('#status').val(); // pt
+
+	console.log(this.val); // pt
 
 
 
