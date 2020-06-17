@@ -124,7 +124,7 @@
                                         
                                        
                                         
-                                        {!! Form::select('status',array ('M'=>'Em manutenção','P'=>'Disponivel'),'P',
+                                        {!! Form::select('status',array ('M'=>'Em manutenção','P'=>'Disponivel'),null,
                                       ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Tipo de Manutencao','data-toggle'=>'dropdown'])!!}
 
 
