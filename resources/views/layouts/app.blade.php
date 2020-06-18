@@ -66,7 +66,7 @@
                 <ul class="dropdown-menu">
                 <li class="header-title"> Sidebar Background</li>
                 <li class="adjustments-line">
-                    <a href="javascript:void(0)" class="switch-trigger background-color">
+                    <a href="javascript:void(1)" class="switch-trigger background-color">
                     <div class="badge-colors text-center">
                         <span class="badge filter badge-primary active" data-color="primary"></span>
                         <span class="badge filter badge-info" data-color="blue"></span>
@@ -103,7 +103,7 @@
         <!-- Place this tag in your head or just before your close body tag. -->
         {{-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> --}}
         <!-- Chart JS -->
-        {{-- <script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script> --}}
+         <script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script> 
         <!--  Notifications Plugin    -->
         <script src="{{ asset('black') }}/js/plugins/bootstrap-notify.js"></script>
 

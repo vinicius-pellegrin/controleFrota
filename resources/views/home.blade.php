@@ -1,5 +1,5 @@
 
-@extends('layouts.app', ['pageSlug' => 'home'])
+@extends('layouts.app', ['pageSlug' => 'home'], ['pageSlug' => 'maps'])
 @section('content')
 	<div class="header py-7 py-lg-8">
 		<div class="container">
@@ -74,13 +74,30 @@
 					 </div>
 				 </div>
 			 </div>
+			</div>
+<!-- final do grafico-->
+<!-- inicio do mapa-->
+			<div class='row'>
+			<div class="col-12">
+				 <div class="card card-chart">
+					 <div class="card-header">
+						 <h5 class="card-category">mapa</h5>
+					 </div>
+					 <div class="card-body">
+						 <div class="map" id='map'>
+							<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN3_PpcqVi_oFcYdcwK01p6UBvtXFKav8"></script>
+						 </div>
+					 </div>
+				 </div>
 
+			</div>
 
-		 <!-- final do grafico-->
+		 <!-- final do mapa-->
 	 
 		  
 @endsection
 @push('js')
+<!-- scripts dos graficos -->
 	<script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script>
 	<script>
 		
@@ -88,4 +105,24 @@
 		  demo.initDashboardPageCharts();
 		}); 
 	</script>
+
+<!-- final script graficos -->
+
+<!--script mapas -->
+
+<!-- Place this tag in your head or just before your close body tag.
+
+Coloque esta etiqueta na sua cabeça ou imediatamente antes da sua etiqueta corporal fechada -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN3_PpcqVi_oFcYdcwK01p6UBvtXFKav8"></script>
+    <script>
+        $(document).ready(function() {
+            // Javascript method's body can be found in assets/js/demos.js
+            demo.initGoogleMaps();
+        });
+    </script>
+
+<!-- final script mapas -->
+
+
+
 @endpush
