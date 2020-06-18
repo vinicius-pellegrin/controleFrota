@@ -1,5 +1,5 @@
 
-@extends('layouts.app', ['pageSlug' => 'home'], ['page' => __('Maps'), 'pageSlug' => 'maps'])
+@extends('layouts.app', ['pageSlug' => 'home'], ['pageSlug' => 'maps'])
 @section('content')
 	<div class="header py-7 py-lg-8">
 		<div class="container">
