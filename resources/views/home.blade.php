@@ -85,7 +85,7 @@
 					 </div>
 					 <div class="card-body">
 						 <div class="map" id='map'>
-							<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN3_PpcqVi_oFcYdcwK01p6UBvtXFKav8"></script>
+							{{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxj7BKEIPdqv7D-u6YJQ8S0m3s8kLVPkQ"></script>--}}
 						 </div>
 					 </div>
 				 </div>
@@ -113,7 +113,7 @@
 <!-- Place this tag in your head or just before your close body tag.
 
 Coloque esta etiqueta na sua cabeça ou imediatamente antes da sua etiqueta corporal fechada -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN3_PpcqVi_oFcYdcwK01p6UBvtXFKav8"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxj7BKEIPdqv7D-u6YJQ8S0m3s8kLVPkQ"></script>
     <script>
         $(document).ready(function() {
             // Javascript method's body can be found in assets/js/demos.js
