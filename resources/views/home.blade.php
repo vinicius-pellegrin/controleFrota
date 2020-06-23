@@ -87,7 +87,7 @@
 					 </div>
 					 <div class="card-body">
 						 <div class="map" id='map'>
-							{{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxj7BKEIPdqv7D-u6YJQ8S0m3s8kLVPkQ"></script>--}}
+							{{--<script src="https://maps.googleapis.com/maps/api/js?key=pegar key do banco"></script>--}}
 							
 						 </div>
 					 </div>
@@ -118,7 +118,7 @@
 
 Coloque esta etiqueta na sua cabeça ou imediatamente antes da sua etiqueta corporal fechada -->
 
-{{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxj7BKEIPdqv7D-u6YJQ8S0m3s8kLVPkQ"></script>
+{{--<script src="https://maps.googleapis.com/maps/api/js?key=pegar key do banco"></script>
    {{-- <script>
         $(document).ready(function() {
             // Javascript method's body can be found in assets/js/demos.js
@@ -169,7 +169,7 @@ var map, infoWindow;
 
 
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdTMrHIQbSpmCzsJFqJBCSeEjxIVuE0fY&callback=initMap"> </script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=pegar key do banco&callback=initMap"> </script>
 
 <!-- final script mapas -->
 
