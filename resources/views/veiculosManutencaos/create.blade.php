@@ -12,7 +12,7 @@
                                 <div class="header-body text-center mb-7">
                                     <div class="row justify-content-center">
                                         <div class="col-lg-5 col-md-6">
-                                            <h1 class="text-white">{{ __('Veículos') }}</h1>
+                                            <h1 class="text-white">{{ __('Manutenções') }}</h1>
                                             <p class="category">Preencha as informações Dos Veículos</p>
                                         </div>
                                     </div>
@@ -47,8 +47,9 @@
                                     <div class="form-group{{ $errors->has('veiculo') ? ' has-danger' : '' }}"> 
                                                                          
                                       {!! Form::label('veiculo', 'Veiculo') !!}   
-                                      {!! Form::select('veiculo_id',\App\Veiculo::orderby('id')->pluck('modelo','id')->toArray(),$veiculo_id,
-                                      ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Selecione o Veiculo'])!!}
+                                      {!! Form::label('veiculo_id', $veiculo->modelo) !!}
+                                      {{--!! Form::select('veiculo_id',\App\Veiculo::orderby('id')->pluck('modelo','id')->toArray(),$veiculo_id,
+                                      ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Selecione o Veiculo'])!!--}}
                                      @include('alerts.feedback', ['field' => 'veiculo'])
                                      
                                      </div>
@@ -75,13 +76,13 @@
       
                                   </div>
                                   
-                                   <div class="col-sm-">
+                                  <!-- {{--<div class="col-sm-">
                                      <div class="form-group{{ $errors->has('km_retorno') ? ' has-danger' : '' }}">
                                       {!! Form::label('kmRetornoManutencao', 'KM Retrono Manutenção') !!}  
                                       {!! Form::number('kmRetornoManutencao', null, ['class'=>'form-control', 'placeholder'=>'km ao retornar']) !!}
                                          @include('alerts.feedback', ['field' => 'km_retorno'])
                                      </div>
-                                   </div>
+                                   </div> --}}-->
                      
                                    <div class="col-md-4">
                      
@@ -92,24 +93,24 @@
                                       </div>
                                   </div> 
     
-                                   <div class="col-md-4" id='dataRetorno' >                     
+                                  <!-- {{--<div class="col-md-4" id='dataRetorno' >                     
                                       <div class="form-group{{ $errors->has('dataRetornoManutencao') ? ' has-danger' : '' }}">
                                         {!! Form::label('dataRetornoManutencao', 'Data de Retrono') !!}  
                                           {!! Form::Date('dataRetronoManutencao', null, ['class'=>'form-control', 'placeholder'=>'Data de Retrono da manuytencão', 'id'=>'dataRetorno']) !!}
                                           @include('alerts.feedback', ['field' => 'dataRetornoManutencao'])
-                                      </div>
+                                      </div> --}}-->
                                   </div>                                   
-                                </div>
+                                
                               
                      
-                                <div class="row">    
-                                  <div class="col-md-6">
-                                    <div class="form-group{{ $errors->has('descricao') ? ' has-danger' : '' }}">
-                                      {!! Form::label('descricao', 'Descricao do que sera feito no veiculo') !!}  
-                                        {!! Form::textarea('descricao', null, ['class'=>'form-control', 'placeholder'=>'Descreca o que sera feito no veiculo', 'rows'=>'10']) !!}
-                                        @include('alerts.feedback', ['field' => 'descricao'])
-                                    </div>
-                                </div>   
+                                  <div class="row">    
+                                    <div class="col-md-6">
+                                      <div class="form-group{{ $errors->has('descricao') ? ' has-danger' : '' }}">
+                                        {!! Form::label('descricao', 'Descricao do que sera feito no veiculo') !!}  
+                                          {!! Form::textarea('descricao', null, ['class'=>'form-control', 'placeholder'=>'Descreca o que sera feito no veiculo', 'rows'=>'10']) !!}
+                                          @include('alerts.feedback', ['field' => 'descricao'])
+                                      </div>
+                                  </div>   
                                    
                                  <div class="col-md-4">
                                      
@@ -149,22 +150,23 @@
                                   <!--<button type="danger" class="btn btn-fill btn-danger float-center" @click.prevent="updateProfile">
                                     Cancelar
                                   </button>-->
-                            </div>
+                                </div>
                                 <div class="clearfix"></div>
-                                </div> <!--inicio do card-->
-                             
+                               </div> 
+                              </div>
                              {!! Form::close() !!}
-                          </div>
-                          <select id= 'teste'>                                      
+                          
+                          <!--select id= 'teste'>                                      
                             <option id = 'option1'>option1</option>
                             <option id = 'option2'>option2 </option>
-                          </select>
+                          </select >
 
-                      </div>
+                     --> </div><!--fim do card-->
                   </div>
               </div>
-        </div>
+        
    </div>
+  </div>
 @endsection
 
 <script>

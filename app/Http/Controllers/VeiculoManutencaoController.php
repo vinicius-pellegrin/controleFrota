@@ -33,14 +33,16 @@ class VeiculoManutencaoController extends Controller
 
     public function edit($id)
     {
+        $veiculo = Veiculo::all();
         $veiculoManutencao = VeiculoManutencao::find($id);
-        return view('veiculosManutencaos.edit',compact('veiculoManutencao'));
+        return view('veiculosManutencaos.edit',compact('veiculoManutencao','veiculo'),['veiculoManutencao'=>$veiculoManutencao]);
         //return view('dashboard');
     }
     public function create($veiculo_id)
     {
         $veiculo_id = $veiculo_id;
-        return view('veiculosManutencaos.create',['veiculo_id'=>$veiculo_id]);
+        $veiculo = Veiculo::all()->where('id','=',$veiculo_id);
+        return view('veiculosManutencaos.create',compact('veiculo'),['veiculo_id'=>$veiculo_id,'veiculo'=>$veiculo]);
         //return view('dashboard');
     }
     public function store(VeiculoManutencaoRequest $request)
@@ -90,6 +92,7 @@ class VeiculoManutencaoController extends Controller
 
     public function update(VeiculoManutencaoRequest $request, $id)
     {
+
         $veiculoManutencao = VeiculoManutencao::find($id)->update($request->all());
         return redirect('veiculoManutencaos.list');
         //return view('veiculos.edit');

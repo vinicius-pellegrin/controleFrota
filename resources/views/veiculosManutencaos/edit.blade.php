@@ -30,7 +30,7 @@
                             @endif
 
                            
-              {!! Form::open(['url'=>"veiculo/$veiculo->id/update",'method'=>'put']) !!}
+              {!! Form::open(['url'=>"veiculoManutencao/$veiculoManutencao->id/update",'method'=>'put']) !!}
                            
                                <!--inicio do card-->
                                <div class="card-body">
@@ -46,7 +46,7 @@
                      
                                      <div class="form-group{{ $errors->has('veiculo') ? ' has-danger' : '' }}">
                                       {!! Form::label('modelo', 'Modelo do Veiculo') !!}
-                                        {!! Form::text('modelo',$veiculo->modelo, ['class'=>'form-control', 'placeholder'=>'veiculo']) !!}                                        
+                                        {!! Form::text('modelo',$veiculoManutencao->modelo, ['class'=>'form-control', 'placeholder'=>'veiculo']) !!}                                        
                                          @include('alerts.feedback', ['field' => 'veiculo'])
                                      </div>
        

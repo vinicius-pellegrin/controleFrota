@@ -82,7 +82,7 @@
                                    <div class="col-md-2">                     
                                       <div class="form-group{{ $errors->has('ocupantes') ? ' has-danger' : '' }}">
                                         {!! Form::label('ocupantes', 'Ocupantes') !!}  
-                                          {!! Form::number('ocupantes',$veiculo-> ocupantes, ['class'=>'form-control', 'placeholder'=>'Numero de Ocupantes']) !!}
+                                          {!! Form::number('ocupantes',$veiculo->ocupantes, ['class'=>'form-control', 'placeholder'=>'Numero de Ocupantes']) !!}
                                           @include('alerts.feedback', ['field' => 'name'])
                                       </div>
                                   </div>                                   
