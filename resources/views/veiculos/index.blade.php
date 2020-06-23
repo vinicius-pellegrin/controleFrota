@@ -6,10 +6,8 @@
                  <div class="header-body text-center mb-7">
                      <div class="row justify-content-center">
                         <div class="col-lg-5 col-md-6">
-                            <h1 class="text-white">{{ __('Welcome!') }}</h1>
-                            <p class="text-lead text-light">
-                                {{ __('Use Black Dashboard theme to create a great project.') }}
-                            </p>
+                            <h1 class="text-white">{{ __('VEICULOS') }}</h1>
+                            
                         </div>
                      </div>
                  </div>            
@@ -18,11 +16,8 @@
 <div class="container">
   <div class="row">
 
-    @if ($pageSlug ?? '' == 'veiculos') class="active " @endif>
-        <a href="{{ route('veiculo.create') }}">
-            <i class="tim-icons icon-chart-pie-36"></i>
-            <p>{{ __('cadatro de Veiculos') }}</p>
-        </a>
+    @if ($pageSlug ?? '' == 'veiculos') class="active " @endif
+        
 
   </div>
   <div class="row">
@@ -32,9 +27,11 @@
           veiculos em uso
         </div>
         <div class="card-body">
-          @foreach ($pneulist as $pl)
-         {{$pl}}
-         @endforeach
+          <h1>{{$emUso}}</h1>
+          
+         {{-- @foreach ($pneulist as $pl)
+         {{$pl}} 
+         @endforeach--}}
         </div>
       </div>  
     </div>
@@ -44,7 +41,7 @@
           veiculos disponiveis
         </div>
         <div class="card-body">
-          {{ $disponivel}}
+          <h1>{{$disponivel}}</h1>
         </div>
       </div>  
     </div>
@@ -55,8 +52,7 @@
          
         </div>
         <div class="card-body">
-          Quantidade vinda do banco <br>
-          {{ $emManutencao}}
+          <h1>{{$emManutencao}}</h1>
         </div>
       </div>  
     </div>
@@ -66,7 +62,7 @@
           total veiculos cadstrados        
         </div>
         <div class="card-body">
-          {{$totalVeiculo ?? ''}}
+         <h1> {{$totalVeiculo ?? ''}}</h1>
 
         </div>
       </div>  
@@ -84,6 +80,10 @@
             <p class="card-category"> lista de Veiculos Cadastrados</p>
           </div>
           <div class="card-body">
+            <a href="{{ route('veiculo.create') }}">
+              <i class="btn btn-fill float-center ">Novo Veiculo </i>
+
+           </a>
             <div class="table-responsive">
               <table class="table">
                 <thead class=" text-primary">
@@ -118,7 +118,15 @@
                       {{$ve->placa}}
                     </td>
                     <td>
-                      Oud-Turnhout
+                      @if ($ve->status=='U')
+                             {{'em uso'}}
+                        @elseif ($ve->status=='M')
+                          {{'em Manutenção'}}
+                          @elseif($ve->status=='L')
+                            {{'Veiculo Livre'}}                          
+                       @endif
+                                                  
+                     
                     </td>
                     <td class="text-primary">
                       $36,738
@@ -132,14 +140,18 @@
           </div>
         </div>
       </div>
-           <div class="col-md-12">
+        <!--   <div class="col-md-12">
                <div class="card card-plain">
                    <div class="card-header card-header-primary">
                      <h4 class="card-title mt-0"> Table on Plain Background</h4>
                      <p class="card-category"> Here is a subtitle for this table</p>
                    </div>
                </div>
-            </div>
+            </div>-->
     </div>
 </div>
 @endsection
+
+
+
+

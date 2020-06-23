@@ -29,6 +29,12 @@
                     <p>{{ __('Pneu') }}</p>
                 </a>
             </li>
+            <li @if ($pageSlug ?? ''  == 'abastecimentos') class="active " @endif>
+                <a href="{{ route('abastecimento.index') }}">
+                    <i class="tim-icons icon-chart-pie-36"></i>
+                    <p>{{ __('Abastecimentos') }}</p>
+                </a>
+            </li>
             <!-- painel administrativo-->
 
             <li>
@@ -82,8 +88,8 @@
                     </ul>
                 </div>
             </li>
-            <li @if ($pageSlug ?? '' ?? '' == 'icons') class="active " @endif>
-                <a href="{{ route('pages.icons') }}">
+           <!-- <li @if ($pageSlug ?? '' ?? '' == 'icons') class="active " @endif>
+              {{--  <a href="{{ route('pages.icons') }}">
                     <i class="tim-icons icon-atom"></i>
                     <p>{{ __('Icons') }}</p>
                 </a>
@@ -99,7 +105,7 @@
                     <i class="tim-icons icon-bell-55"></i>
                     <p>{{ __('Notifications') }}</p>
                 </a>
-            </li>
+            </li>--}}-->
             <li @if ($pageSlug ?? '' ?? '' == 'tables') class="active " @endif>
                 <a href="{{ route('pages.tables') }}">
                     <i class="tim-icons icon-puzzle-10"></i>
@@ -118,11 +124,11 @@
                     <p>{{ __('RTL Support') }}</p>
                 </a>
             </li>
-            <li class=" {{ $pageSlug ?? '' ?? '' == 'upgrade' ? 'active' : '' }} bg-info">
+            <!-- {{--<li class=" {{ $pageSlug ?? '' ?? '' == 'upgrade' ? 'active' : '' }} bg-info">
                 <a href="{{ route('pages.upgrade') }}">
                     <i class="tim-icons icon-spaceship"></i>
                     <p>{{ __('Upgrade to PRO') }}</p>
-                </a>
+                </a>--}} -->
             </li>
         </ul>
     </div>

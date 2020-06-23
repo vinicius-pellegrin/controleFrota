@@ -17,8 +17,9 @@ class VeiculoController extends Controller
         $emManutencao = Veiculo::where('status','=','M')->count();
         $disponivel = Veiculo::where('status','=','L')->count();
         $veiculos = Veiculo::all();
+        $emUso = Veiculo::where('status','=','U')->count();
         $pneulist = Pneu::all();
-        return view('veiculos.index',compact('totalVeiculo','pneulist','emManutencao','disponivel'),['veiculos'=>$veiculos]);
+        return view('veiculos.index',compact('totalVeiculo','pneulist','emManutencao','disponivel','emUso'),['veiculos'=>$veiculos]);
         //return view('dashboard');
         
     }

@@ -1,5 +1,5 @@
 
-@extends('layouts.app', ['pageSlug' => 'home'], ['pageSlug' => 'maps'])
+@extends('layouts.app', ['pageSlug' => 'home'], ['pageSlug' => 'maps'],  ['pageSlug' => 'veiculo'])
 @section('content')
 	<div class="header py-7 py-lg-8">
 		<div class="container">
@@ -14,7 +14,8 @@
 				</div>                
 			</div>
 		</div>
-	</div>                
+	</div>    
+	@if ($pageSlug ?? '' == 'veiculos') class="active " @endif            
 	 <!-- inicio do grafico-->
 		 <div class="row">
 			 <div class="col-12">
@@ -64,8 +65,9 @@
 			 <div class="col-lg-4">
 				 <div class="card card-chart">
 					 <div class="card-header">
-						 <h5 class="card-category">Total Shipments</h5>
-						 <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> 763,215</h3>
+						 <h5 class="card-category">Total de Veículos</h5>
+						 <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> {{$totalVeiculo ?? ''}}</h3>
+						 {{--$emManutencao ?? '' ?? ''}},{{$emUso ?? '' ?? ''}},{{$disponivel ?? ''--}}
 					 </div>
 					 <div class="card-body">
 						 <div class="chart-area">
@@ -94,18 +96,19 @@
 			</div>
 
 		 <!-- final do mapa-->
+		 <button class="btn btn-primary btn-block" onclick="notificacao.showNotification('bottom','left')">Bottom Left</button>
 	 
 		  
 @endsection
 @push('js')
-<!-- scripts dos graficos -->
+<!-- scripts dos graficos {{--
 	<script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script>
 	<script>
 		
 		$(document).ready(function() {
 		  demo.initDashboardPageCharts();
 		}); 
-	</script>
+	</script>--}} -->
 
 <!-- final script graficos -->
 
@@ -114,7 +117,8 @@
 <!-- Place this tag in your head or just before your close body tag.
 
 Coloque esta etiqueta na sua cabeça ou imediatamente antes da sua etiqueta corporal fechada -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxj7BKEIPdqv7D-u6YJQ8S0m3s8kLVPkQ"></script>
+
+{{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxj7BKEIPdqv7D-u6YJQ8S0m3s8kLVPkQ"></script>
    {{-- <script>
         $(document).ready(function() {
             // Javascript method's body can be found in assets/js/demos.js
@@ -127,7 +131,7 @@ Coloque esta etiqueta na sua cabeça ou imediatamente antes da sua etiqueta corp
 var map, infoWindow;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
+          center: {lat: -28.255651, lng:  -52.397862},
           zoom: 13
         });
         infoWindow = new google.maps.InfoWindow;
@@ -165,10 +169,52 @@ var map, infoWindow;
 
 
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxj7BKEIPdqv7D-u6YJQ8S0m3s8kLVPkQ&callback=initMap"> </script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdTMrHIQbSpmCzsJFqJBCSeEjxIVuE0fY&callback=initMap"> </script>
 
 <!-- final script mapas -->
 
 
 
+    <script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script>
+    <script>
+		var ctx = document.getElementById("chartLinePurple");
+		//Type, Data e options
+		
+		var chartGraph = new Chart(ctx,{
+			type:'pie',
+			data:{
+				labels:["Em uso","Em Manutenção","Disponiveis"],
+				datasets:[{
+					label:"Grafico de veiculos",
+					data:["{{$emUso ?? ''}}","{{$emManutencao ?? '' ?? ''}}","{{$disponivel ?? ''}}"],
+					backgroundColor:["rgb(0,127,255)","rgb(165,42,42)","rgb(95,159,159"],
+					borderWidth:0
+				}]
+			}
+
+
+		});
+
+
+	notificacao = { 
+	showNotification: function(from, align) {
+    color = Math.floor((Math.random() * 4) + 1);
+
+    $.notify({
+      icon: "tim-icons icon-bell-55",
+      message: "teste de notificação"
+
+    }, {
+      type: type[color],
+      timer: 8000,
+      placement: {
+        from: from,
+        align: align
+      }
+    });
+  }
+}
+
+       
+    </script>
 @endpush

@@ -154,8 +154,9 @@
                                   <!--<base-button round type="submit" class="btn btn-info btn-fill float-center" @click.prevent="updateProfile">
                                     Salvar
                                   </base-button>-->
+                                  
                                   <a href="{{ route('veiculo.index') }}">
-                                    <i class="btn btn-danger btn-fill float-center "><p >{{ __('Cancelar') }}</p></i>
+                                    <i class="btn btn-danger"><b>Cancelar</b></i>
                                     
                                 </a>
                                   

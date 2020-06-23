@@ -1,7 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
 
+namespace App\Http\Controllers;
+use App\Veiculo;
+use App\pneu;
+use App\Http\Requests\VeiculoRequest;
 class HomeController extends Controller
 {
     /**
@@ -21,7 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $totalVeiculo = Veiculo::count();
+        $emManutencao = Veiculo::where('status','=','M')->count();
+        $disponivel = Veiculo::where('status','=','L')->count();
+        $veiculos = Veiculo::all();
+        $emUso = Veiculo::where('status','=','U')->count();
+        $pneulist = Pneu::all();
+
+        return view('home',compact('totalVeiculo','pneulist','emManutencao','disponivel','emUso'),['veiculos'=>$veiculos]);
         //return view('dashboard');
     }
 

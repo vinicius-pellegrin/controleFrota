@@ -1,9 +1,9 @@
-@extends('layouts.app', ['class' => 'register-page', 'page' => __('Register Page'), 'contentClass' => 'register-page'])
+@extends('layouts.app', ['class' => 'register-page', 'page' => __('Pagina de Cadastro'), 'contentClass' => 'register-page'])
 
 @section('content')
     <div class="row">
-        <div class="col-md-5 ml-auto">
-            <div class="info-area info-horizontal mt-5">
+        <div class="col-sm-0,5 ml-auto">
+         <!-- {{--   <div class="info-area info-horizontal mt-5">
                 <div class="icon icon-warning">
                     <i class="tim-icons icon-wifi"></i>
                 </div>
@@ -35,13 +35,15 @@
                         {{ __('There is also a Fully Customizable CMS Admin Dashboard for this product.') }}
                     </p>
                 </div>
-            </div>
+            </div>--}} -->
         </div>
-        <div class="col-md-7 mr-auto">
+        
+      
+        <div class="col-md-7 mr-auto ">
             <div class="card card-register card-white">
                 <div class="card-header">
                     <img class="card-img" src="{{ asset('black') }}/img/card-primary.png" alt="Card image">
-                    <h4 class="card-title">{{ __('Register') }}</h4>
+                    <h4 class="card-title">{{ __('Registro') }}</h4>
                 </div>
                 <form class="form" method="post" action="{{ route('register') }}">
                     @csrf
@@ -86,16 +88,18 @@
                             <label class="form-check-label">
                                 <input class="form-check-input" type="checkbox">
                                 <span class="form-check-sign"></span>
-                                {{ __('I agree to the') }}
-                                <a href="#">{{ __('terms and conditions') }}</a>.
+                                {{ __('Eu aceito os') }}
+                                <a href="#">{{ __('termos e condições') }}</a>.
                             </label>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary btn-round btn-lg">{{ __('Get Started') }}</button>
+                        <button type="submit" class="btn btn-primary btn-round btn-lg">{{ __('Cadastrar') }}</button>
+                        <button type="abort" class="btn btn-danger btn-round btn-lg"><a href="/">{{ __('Cancelar') }}</a></button>
                     </div>
                 </form>
             </div>
         </div>
+       
     </div>
 @endsection

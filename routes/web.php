@@ -1,5 +1,6 @@
 <?php
-
+use App\Veiculo;
+use App\pneu;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+
+Route::group(['prefix' => ''], function () {
+
+	Route::get('/', function () {
+		$totalVeiculo = Veiculo::count();
+        $emManutencao = Veiculo::where('status','=','M')->count();
+        $disponivel = Veiculo::where('status','=','L')->count();
+        $veiculos = Veiculo::all();
+        $emUso = Veiculo::where('status','=','U')->count();
+        $pneulist = Pneu::all();
+
+        return view('home',compact('totalVeiculo','pneulist','emManutencao','disponivel','emUso'),['veiculos'=>$veiculos]);
+	});
 });
+
+
+
 Auth::routes();
 
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard')->middleware('auth');
@@ -112,6 +127,22 @@ Route::group(['prefix'=>'tipoVeiculo', 'middleware' => 'auth'], function () {
 		});
 
 
+	// Rota abastecimentos
+	Route::group(['prefix'=>'abastecimento', 'middleware' => 'auth'], function () {
+		Route::get('', ['as' => 'abastecimento.index', 'uses' => 'AbastecimentoController@index']);
+		Route::get('{id}/edit', ['as' => 'abastecimento.edit', 'uses' => 'AbastecimentoController@edit']);
+		Route::get('list', ['as' => 'abastecimento.list', 'uses' => 'AbastecimentoController@list']);
+		Route::get('create', ['as' => 'abastecimento.create', 'uses' => 'AbastecimentoController@create']);
+		Route::post('store', ['as' => 'abastecimento.store', 'uses' => 'AbastecimentoController@store']);
+		Route::get('{id}/destroy',['as' => 'abastecimento.destroy', 'uses' => 'AbastecimentoController@destroy']);
+        Route::put('{id}/update',['as' => 'abastecimento.update', 'uses' => 'AbastecimentoController@update']);
+        //master detail
+        Route::get('createMaster', ['as'=>'abastecimento.createMaster','uses'=>'AbastecimentoController@createMaster']);
+        Route::get('masterDetail', ['as'=>'abastecimento.masterDetail','uses'=>'AbastecimentoController@masterDetail']);
+
+		});
+
+
 
 
 
@@ -132,11 +163,8 @@ Route::group(['prefix'=>'tipoVeiculo', 'middleware' => 'auth'], function () {
 	//Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 //});
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Auth::routes();
-
+//Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
