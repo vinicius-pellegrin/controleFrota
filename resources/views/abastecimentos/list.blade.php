@@ -9,7 +9,7 @@
             <div class="header-body text-center mb-7">
                 <div class="row justify-content-center">
                     <div class="col-lg-5 col-md-6">
-                        <h1 class="text-white">{{ __('Lista de pneus') }}</h1>
+                        <h1 class="text-white">{{ __('Lista de abastecimentos') }}</h1>
                         <p class="text-lead text-light">
                             {{ __('Pagina de Listagem') }}
                         </p>
@@ -62,10 +62,10 @@
                                         @endforeach
                                     </td>
 
-                                    <td>
+                                  <!-- {{--  <td>
                                     <a href="{{route('pneu.edit',['id'=>$ve->id])}}" class="btn-sm btn-sucsess">Editar</a>
                                     <a href="{{route('pneu.destroy',['id'=>$ve->id])}}" class="btn-sm btn-danger">Excluir</a>
-                                    </td>
+                                  </td> --}}-->
                                   </tr>
                                   @endforeach
                                 </tbody>
