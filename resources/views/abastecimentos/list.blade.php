@@ -27,6 +27,10 @@
                             <p class="card-category">Abaixo lista dos abasteciemntos</p>
                           </div>
                           <div class="card-body">
+                            <a href="{{ route('abastecimento.create') }}">
+                                <i class="btn btn-fill float-center ">Inserir Abasteciemnto </i>
+
+                             </a>
                             <div class="table-responsive">
                               <table class="table">
                                 <thead class=" text-primary">

@@ -3,7 +3,7 @@
 @section('content')
 <div class="header py-7 py-lg-8">
     <div class="container">
-        
+
     </div>
 </div>
 <!-- corpo do projeto-->
@@ -23,17 +23,17 @@
          <ul class="alert alert-danger">
              @foreach ($errors->all() as $error)
              <li>{{$error}}</li>
-                 
+
              @endforeach
          </ul>
-             
+
          @endif
 
          {!! Form::open(['url'=>'manutencao/store']) !!}
-        
+
              <div class="card-body">
                 @csrf
-                @method('post') 
+                @method('post')
 
                 @include('alerts.success')
 
@@ -47,7 +47,7 @@
                             @include('alerts.feedback', ['field' => 'descricao'])
                         </div>
 
-                    </div>              
+                    </div>
                 </div>
                 </div>
                 <div class="row">
@@ -57,10 +57,11 @@
                         <!--<base-button round type="submit" class="btn btn-info btn-fill float-center" @click.prevent="updateProfile">
                           Salvar
                         </base-button>-->
-                        {!! Form::submit('Cancelar', ['type'=>'submit', 'class'=>'btn btn-danger btn-fill float-center']) !!}
-                        <!--<button type="danger" class="btn btn-fill btn-danger float-center" @click.prevent="updateProfile">
-                          Cancelar
-                        </button>-->
+                        {{--!! Form::submit('Cancelar', ['type'=>'submit', 'class'=>'btn btn-danger btn-fill float-center']) !!--}}
+                        <button type="danger" class="btn btn-fill btn-danger float-center">
+                            <a href="list">Cancelar</a>
+
+                        </button>
                   </div>
                   <div class="clearfix"></div>
                 </div>

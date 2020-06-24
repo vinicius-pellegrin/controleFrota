@@ -105,9 +105,6 @@
                   <th>
                     Status
                   </th>
-                  <th>
-                    ---
-                  </th>
                 </thead>
                 <tbody>
                   @foreach ($veiculos as $ve)
@@ -131,13 +128,13 @@
                           @elseif($ve->status=='L')
                             {{'Veiculo Livre'}}
                        @endif
-
-
                     </td>
-                    <td class="text-primary">
-                      $36,738
+                    <td>
+                        <a href="{{route('veiculo.edit',['id'=>$ve->id])}}" class="btn-sm btn-sucsess">Editar</a>
+                        <a href="{{route('veiculo.destroy',['id'=>$ve->id])}}" class="btn-sm btn-danger">Excluir</a>
                     </td>
                   </tr>
+
                   @endforeach
 
                 </tbody>

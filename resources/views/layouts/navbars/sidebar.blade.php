@@ -18,19 +18,19 @@
                 </a>
             </li>
             <li @if ($pageSlug ?? ''  == 'manutencao') class="active " @endif>
-                <a href="{{ route('manutencao.index') }}">
+                <a href="{{ route('manutencao.list') }}">
                     <i class="tim-icons icon-chart-pie-36"></i>
                     <p>{{ __('Manutenções') }}</p>
                 </a>
             </li>
             <li @if ($pageSlug ?? ''  == 'pneu') class="active " @endif>
-                <a href="{{ route('pneu.index') }}">
+                <a href="{{ route('pneu.list') }}">
                     <i class="tim-icons icon-chart-pie-36"></i>
                     <p>{{ __('Pneu') }}</p>
                 </a>
             </li>
             <li @if ($pageSlug ?? ''  == 'abastecimentos') class="active " @endif>
-                <a href="{{ route('abastecimento.index') }}">
+                <a href="{{ route('abastecimento.list') }}">
                     <i class="tim-icons icon-chart-pie-36"></i>
                     <p>{{ __('Abastecimentos') }}</p>
                 </a>
@@ -46,18 +46,24 @@
 
                 <div class="collapse" id="controle-de-manutencoes" >
                     <ul class="nav pl-4">
+                        <li @if ($pageSlug ?? '' ?? '' == 'veiculo') class="active " @endif>
+                            <a href="{{ route('veiculo.list')  }}">
+                                <i class="tim-icons icon-single-02"></i>
+                                <p>{{ __('Veiculo Manutenção') }}</p>
+                            </a>
+                        </li>
                         <li @if ($pageSlug ?? '' ?? '' == 'veiculoManutencao') class="active " @endif>
                             <a href="{{ route('veiculoManutencao.list')  }}">
                                 <i class="tim-icons icon-single-02"></i>
                                 <p>{{ __('Lista de Manuteções') }}</p>
                             </a>
                         </li>
-                        <li @if ($pageSlug ?? '' ?? '' == 'veiculoManutencao') class="active " @endif>
-                            <a href="{{ route('veiculoManutencao.index')  }}">
+                        <!--{{--<li @if ($pageSlug ?? '' ?? '' == 'veiculoManutencao') class="active " @endif>
+                            <a href="{{ route('veiculoManutencao.create')  }}">
                                 <i class="tim-icons icon-bullet-list-67"></i>
-                                <p>{{ __('index') }}</p>
+                                <p>{{ __('nova manutenção') }}</p>
                             </a>
-                        </li>
+                        </li>--}}-->
                     </ul>
                 </div>
             </li>
@@ -65,13 +71,13 @@
             <!-- painel administrativo -->
 
             <li>
-                <a data-toggle="collapse" href="#laravel-examples" aria-expanded="false">
+                <!--<a data-toggle="collapse" href="#laravel-examples" aria-expanded="false">
                     <i class="fab fa-laravel" ></i>
-                    <span class="nav-link-text" >{{ __('Laravel Examples') }}</span>
+                    <span class="nav-link-text" >{{-- __('Laravel Examples') --}}</span>
                     <b class="caret mt-1"></b>
-                </a>
+                </a>-->
 
-                <div class="collapse show" id="laravel-examples">
+             <div class="collapse show" id="laravel-examples">
                     <ul class="nav pl-4">
                         <li @if ($pageSlug ?? '' ?? '' == 'profile') class="active " @endif>
                             <a href="{{ route('profile.edit')  }}">
@@ -88,8 +94,8 @@
                     </ul>
                 </div>
             </li>
-           <!-- <li @if ($pageSlug ?? '' ?? '' == 'icons') class="active " @endif>
-              {{--  <a href="{{ route('pages.icons') }}">
+           <!--{{-- <li @if ($pageSlug ?? '' ?? '' == 'icons') class="active " @endif>
+                <a href="{{ route('pages.icons') }}">
                     <i class="tim-icons icon-atom"></i>
                     <p>{{ __('Icons') }}</p>
                 </a>
@@ -105,7 +111,7 @@
                     <i class="tim-icons icon-bell-55"></i>
                     <p>{{ __('Notifications') }}</p>
                 </a>
-            </li>--}}-->
+            </li>
             <li @if ($pageSlug ?? '' ?? '' == 'tables') class="active " @endif>
                 <a href="{{ route('pages.tables') }}">
                     <i class="tim-icons icon-puzzle-10"></i>

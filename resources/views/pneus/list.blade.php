@@ -14,7 +14,7 @@
                             {{ __('Pagina de Listagem') }}
                         </p>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
 
@@ -27,6 +27,10 @@
                             <p class="card-category">Abaixo tipos de Pneus que possuimos na Empresa</p>
                           </div>
                           <div class="card-body">
+                            <a href="{{ route('pneu.create') }}">
+                                <i class="btn btn-fill float-center ">Novo Pneu</i>
+
+                             </a>
                             <div class="table-responsive">
                               <table class="table">
                                 <thead class=" text-primary">
@@ -59,13 +63,13 @@
                                         {{$pn->largura}}
                                     </td>
                                     <td>
-                                        {{$pn->altura}} 
+                                        {{$pn->altura}}
                                     </td>
                                     <td>
-                                        {{$pn->roda}} 
+                                        {{$pn->roda}}
                                     </td>
                                     <td>
-                                        {{$pn->marca}}  
+                                        {{$pn->marca}}
                                     </td>
                                     <td>
                                     <a href="{{route('pneu.edit',['id'=>$pn->id])}}" class="btn-sm btn-sucsess">Editar</a>

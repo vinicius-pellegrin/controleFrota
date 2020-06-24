@@ -6,12 +6,12 @@
             <div class="header-body text-center mb-7">
                 <div class="row justify-content-center">
                     <div class="col-lg-5 col-md-6">
-                        <h1 class="text-white">{{ __('Lista de pneus') }}</h1>
+                        <h1 class="text-white">{{ __('Lista de Veiculos') }}</h1>
                         <p class="text-lead text-light">
                             {{ __('Pagina de Listagem') }}
                         </p>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
 
@@ -29,8 +29,8 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title ">Tabela de Pneus</h4>
-                            <p class="card-category">Abaixo tipos de Pneus que possuimos na Empresa</p>
+                            <h4 class="card-title ">Tabela de Veiculos</h4>
+                            <p class="card-category">Abaixo veiculos que possuimos na Empresa</p>
                           </div>
                           <div class="card-body">
                             <div class="table-responsive">
@@ -65,17 +65,16 @@
                                         {{$ve->modelo}}
                                     </td>
                                     <td>
-                                        {{$ve->ano}} 
+                                        {{$ve->ano}}
                                     </td>
                                     <td>
-                                        {{$ve->placa}} 
+                                        {{$ve->placa}}
                                     </td>
                                     <td>
-                                        {{$ve->marca}}  
+                                        {{$ve->marca}}
                                     </td>
                                     <td>
-                                    <a href="{{route('veiculo.edit',['id'=>$ve->id])}}" class="btn-sm btn-sucsess">Editar</a>
-                                    <a href="{{route('veiculo.destroy',['id'=>$ve->id])}}" class="btn-sm btn-danger">Excluir</a>
+
                                     <a href="{{route('veiculoManutencao.create',['veiculo_id'=>$ve->id])}}" class="btn-sm btn-sucsess">enviar manutenção</a>
                                     <a href="{{route('veiculoManutencao.destroy',['id'=>$ve->id])}}" class="btn-sm btn-danger">Retorno manutenção</a>
                                     </td>

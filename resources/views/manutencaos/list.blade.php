@@ -12,7 +12,7 @@
                             {{ __('Pagina de Listagem') }}
                         </p>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
 
@@ -25,6 +25,9 @@
                             <p class="card-category">Abaixo tipos de manutencoes que possuimos na Empresa</p>
                           </div>
                           <div class="card-body">
+                            <a href="{{ route('veiculo.create') }}">
+                                <i class="btn btn-fill float-center ">Nova Manutenção </i>
+                             </a>
                             <div class="table-responsive">
                               <table class="table">
                                 <thead class=" text-primary">
@@ -34,7 +37,7 @@
                                   <th>
                                     Descricao
                                   </th>
-                                
+
                                   <th>
                                     Ação
                                   </th>
@@ -48,7 +51,7 @@
                                     <td>
                                         {{$man->descricao}}
                                     </td>
-                                
+
                                     <td>
                                     <a href="{{route('manutencao.edit',['id'=>$man->id])}}" class="btn-sm btn-sucsess">Editar</a>
                                     <a href="{{route('manutencao.destroy',['id'=>$man->id])}}" class="btn-sm btn-danger">Excluir</a>

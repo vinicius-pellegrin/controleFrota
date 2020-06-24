@@ -11,11 +11,11 @@
 							a partir daqui inicaiaremos o projeto
 						</p>
 					</div>
-				</div>                
+				</div>
 			</div>
 		</div>
-	</div>    
-	@if ($pageSlug ?? '' == 'veiculos') class="active " @endif            
+	</div>
+	@if ($pageSlug ?? '' == 'veiculos') class="active " @endif
 	 <!-- inicio do grafico-->
 		 <div class="row">
 			 <div class="col-12">
@@ -48,14 +48,15 @@
 									 <span class="d-block d-sm-none">
 										 <i class="tim-icons icon-tap-02"></i>
 									 </span>
-								 </label>
+                                 </label>
+
 								 </div>
 							 </div>
 						 </div>
 					 </div>
 					 <div class="card-body">
 						 <div class="chart-area">
-							 <canvas id="chartBig1"></canvas>
+                            <canvas id="CountryChart"></canvas>
 						 </div>
 					 </div>
 				 </div>
@@ -88,7 +89,7 @@
 					 <div class="card-body">
 						 <div class="map" id='map'>
 							{{--<script src="https://maps.googleapis.com/maps/api/js?key=pegar key do banco"></script>--}}
-							
+
 						 </div>
 					 </div>
 				 </div>
@@ -96,18 +97,18 @@
 			</div>
 
 		 <!-- final do mapa-->
-		 <button class="btn btn-primary btn-block" onclick="notificacao.showNotification('bottom','left')">Bottom Left</button>
-	 
-		  
+		<!-- <button class="btn btn-primary btn-block" onclick="notificacao.showNotification('bottom','left')">Bottom Left</button>-->
+
+
 @endsection
 @push('js')
 <!-- scripts dos graficos {{--
 	<script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script>
 	<script>
-		
+
 		$(document).ready(function() {
 		  demo.initDashboardPageCharts();
-		}); 
+		});
 	</script>--}} -->
 
 <!-- final script graficos -->
@@ -125,16 +126,19 @@ Coloque esta etiqueta na sua cabeça ou imediatamente antes da sua etiqueta corp
             demo.initGoogleMaps();
         });
 	</script> --}}
-	
+
 <!--script do google -->
 <script>
-var map, infoWindow;
+var map, infoWindow, mapOptions;
       function initMap() {
+
+
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -28.255651, lng:  -52.397862},
-          zoom: 13
+          zoom: 13,
+          scrollwheel: false,
+
         });
-        infoWindow = new google.maps.InfoWindow;
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
@@ -163,13 +167,15 @@ var map, infoWindow;
                               'Error: The Geolocation service failed.' :
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
+
+
       }
 
 
 
 
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=pegar key do banco&callback=initMap"> </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdTMrHIQbSpmCzsJFqJBCSeEjxIVuE0fY&callback=initMap"> </script>
 
 <!-- final script mapas -->
 
@@ -179,7 +185,7 @@ var map, infoWindow;
     <script>
 		var ctx = document.getElementById("chartLinePurple");
 		//Type, Data e options
-		
+
 		var chartGraph = new Chart(ctx,{
 			type:'pie',
 			data:{
@@ -188,15 +194,117 @@ var map, infoWindow;
 					label:"Grafico de veiculos",
 					data:["{{$emUso ?? ''}}","{{$emManutencao ?? '' ?? ''}}","{{$disponivel ?? ''}}"],
 					backgroundColor:["rgb(0,127,255)","rgb(165,42,42)","rgb(95,159,159"],
-					borderWidth:0
+                    borderWidth:0
 				}]
 			}
+        });
 
 
-		});
 
 
-	notificacao = { 
+
+
+
+        $(document).ready(function() {
+            gradientBarChartConfiguration = {
+      maintainAspectRatio: false,
+      legend: {
+        display: false
+      },
+
+      tooltips: {
+        backgroundColor: '#f5f5f5',
+        titleFontColor: '#333',
+        bodyFontColor: '#666',
+        bodySpacing: 4,
+        xPadding: 12,
+        mode: "nearest",
+        intersect: 0,
+        position: "nearest"
+      },
+      responsive: true,
+      scales: {
+        yAxes: [{
+
+          gridLines: {
+            drawBorder: false,
+            color: 'rgba(29,140,248,0.1)',
+            zeroLineColor: "transparent",
+          },
+          ticks: {
+            suggestedMin: 60,
+            suggestedMax: 120,
+            padding: 20,
+            fontColor: "#9e9e9e"
+          }
+        }],
+
+        xAxes: [{
+
+          gridLines: {
+            drawBorder: false,
+            color: 'rgba(29,140,248,0.1)',
+            zeroLineColor: "transparent",
+          },
+          ticks: {
+            padding: 20,
+            fontColor: "#9e9e9e"
+          }
+        }]
+      }
+    };
+
+    var ctx = document.getElementById("CountryChart").getContext("2d");
+var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+gradientStroke.addColorStop(1, 'rgba(29,140,248,0.2)');
+gradientStroke.addColorStop(0.4, 'rgba(29,140,248,0.0)');
+gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      responsive: true,
+      legend: {
+        display: false
+      },
+      data: {
+
+        labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+        datasets: [{
+          label: "PErformance",
+          fill: true,
+          backgroundColor: gradientStroke,
+          hoverBackgroundColor: gradientStroke,
+          borderColor: '#1f8ef1',
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          data: [53, 20, 10, 80, 100, 45],
+        }]
+      },
+      options: gradientBarChartConfiguration
+    });
+
+        });
+
+
+
+
+
+
+
+
+
+    //aqui é o meu codigo
+
+
+
+
+
+
+
+
+//notificações
+	notificacao = {
 	showNotification: function(from, align) {
     color = Math.floor((Math.random() * 4) + 1);
 
@@ -215,6 +323,6 @@ var map, infoWindow;
   }
 }
 
-       
+
     </script>
 @endpush

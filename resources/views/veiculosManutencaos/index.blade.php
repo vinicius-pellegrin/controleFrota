@@ -12,7 +12,7 @@
                         </p>
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
     </div>
 <div class="container">
@@ -27,7 +27,7 @@
          {{$pl}}
          @endforeach
         </div>
-      </div>  
+      </div>
     </div>
     <div class="col-md-3">
       <div class="card">
@@ -37,7 +37,7 @@
         <div class="card-body">
           quantidade
         </div>
-      </div>  
+      </div>
     </div>
     <div class="col-md-3">
       <div class="card">
@@ -47,21 +47,21 @@
         <div class="card-body">
           Quantidade vinda do banco
         </div>
-      </div>  
+      </div>
     </div>
     <div class="col-md-3">
       <div class="card">
         <div class="card-header">
-          total veiculos cadstrados        
+          total veiculos cadstrados
         </div>
         <div class="card-body">
           {{$totalVeiculo}}
 
         </div>
-      </div>  
+      </div>
     </div>
 
-    
+
   </div>
 </div>
 <div class="container-fluid">
@@ -110,7 +110,7 @@
                       $36,738
                     </td>
                   </tr>
-                  
+
                 </tbody>
               </table>
             </div>
@@ -118,10 +118,6 @@
         </div>
       </div>
       <div class="col-md-12">
-        <div class="card card-plain">
-          <div class="card-header card-header-primary">
-            <h4 class="card-title mt-0"> Table on Plain Background</h4>
-            <p class="card-category"> Here is a subtitle for this table</p>
-          </div>
+
         </div>
 @endsection
