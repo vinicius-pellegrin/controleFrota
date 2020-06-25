@@ -260,6 +260,8 @@ var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
 gradientStroke.addColorStop(1, 'rgba(29,140,248,0.2)');
 gradientStroke.addColorStop(0.4, 'rgba(29,140,248,0.0)');
 gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
+var veiculo ='@foreach ($veiculos as $ve) {{$ve->modelo}} @endforeach';
+//var veiculo = [];
     var myChart = new Chart(ctx, {
       type: 'bar',
       responsive: true,
@@ -268,7 +270,7 @@ gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
       },
       data: {
 
-        labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+        labels: [veiculo],
         datasets: [{
           label: "PErformance",
           fill: true,

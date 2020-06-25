@@ -46,10 +46,14 @@
                                   <div class="col-md-4">
                                     <div class="form-group{{ $errors->has('veiculo') ? ' has-danger' : '' }}">
 
-                                      {!! Form::label('veiculo', 'Veiculo') !!}
+
+                                    <h1> Veiculo: {{ str_replace('"','',str_replace('[','',str_replace(']','',$modelo)))}}</h1>
+                                      {{--!! Form::label('veiculo', "$modelo") !!}
+                                      {!! Form::label('modelo',\App\Veiculo::where('id','=',$veiculo_id)->pluck('modelo')) !!}
+
 
                                       {!! Form::select('veiculo_id',\App\Veiculo::orderby('id')->pluck('modelo','id')->toArray(),$veiculo_id,
-                                      ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Selecione o Veiculo'])!!}                                     @include('alerts.feedback', ['field' => 'veiculo'])
+                                      ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Selecione o Veiculo'])!!--}}                                     @include('alerts.feedback', ['field' => 'veiculo'])
 
                                      </div>
 
@@ -98,20 +102,20 @@
                                           {!! Form::Date('dataRetronoManutencao', null, ['class'=>'form-control', 'placeholder'=>'Data de Retrono da manuytencão', 'id'=>'dataRetorno']) !!}
                                           @include('alerts.feedback', ['field' => 'dataRetornoManutencao'])
                                       </div> --}}-->
-                                  </div>
 
 
 
-                                  <div class="row">
-                                    <div class="col-md-6">
+
+
+                                    <div class="col-md-8">
                                       <div class="form-group{{ $errors->has('descricao') ? ' has-danger' : '' }}">
                                         {!! Form::label('descricao', 'Descricao do que sera feito no veiculo') !!}
                                           {!! Form::textarea('descricao', null, ['class'=>'form-control', 'placeholder'=>'Descreca o que sera feito no veiculo', 'rows'=>'10']) !!}
                                           @include('alerts.feedback', ['field' => 'descricao'])
-                                      </div>
-                                  </div>
+                                       </div>
 
-                                 <div class="col-md-4">
+
+                                 <!--div class="col-md-4">
 
 
 
@@ -120,13 +124,13 @@
 
                                       <div class="form-group{{ $errors->has('veiculo') ? ' has-danger' : '' }}">
 
-                                        {!! Form::label('status', 'Status') !!}
+                                        {{--!! Form::label('status', 'Status') !!}
 
 
 
                                         {!! Form::select('status',array ('M'=>'Em manutenção','P'=>'Disponivel'),null,
-                                      ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Tipo de Manutencao','data-toggle'=>'dropdown'])!!}
-
+                                      ['class'=>'btn btn-default btn-md text-light col-md row-sm','title'=>'Tipo de Manutencao','data-toggle'=>'dropdown'])!!--}}
+                                        {!! Form::text('status', 'M', ['class'=>'form-control', 'hidden']) !!}
 
                                        @include('alerts.feedback', ['field' => 'status'])
 
@@ -135,23 +139,27 @@
 
 
                                   </div>
-                                 </div>
-                                <div class="text-center">
-                                  {!! Form::submit('Salvar', ['type'=>'submit', 'class'=>'btn btn-info btn-fill float-center']) !!}
-                                  <!--<base-button round type="submit" class="btn btn-info btn-fill float-center" @click.prevent="updateProfile">
-                                    Salvar
-                                  </base-button>-->
-                                  <a href="{{ route('veiculoManutencao.index') }}">
-                                    <i class="btn btn-danger btn-fill float-center "><p >{{ __('Cancelar') }}</p></i>
-
-                                </a>
-
-                                  <!--<button type="danger" class="btn btn-fill btn-danger float-center" @click.prevent="updateProfile">
-                                    Cancelar
-                                  </button>-->
+                                 </div-->
+                                    </div>
                                 </div>
-                                <div class="clearfix"></div>
+
+                                    <div class="row">
+                                    <div class="text-center">
+                                      {!! Form::submit('Salvar', ['type'=>'submit', 'class'=>'btn btn-info btn-fill float-center']) !!}
+                                      <!--<base-button round type="submit" class="btn btn-info btn-fill float-center" @click.prevent="updateProfile">
+                                        Salvar
+                                      </base-button>-->
+                                      <a href="{{ route('veiculoManutencao.index') }}">
+                                        <i class="btn btn-danger btn-fill float-center "><p >{{ __('Cancelar') }}</p></i>
+
+                                     </a>
+
+                                      <!--<button type="danger" class="btn btn-fill btn-danger float-center" @click.prevent="updateProfile">
+                                        Cancelar
+                                      </button>-->
+                                    </div>
                                </div>
+                               <div class="clearfix"></div>
                               </div>
                              {!! Form::close() !!}
 
@@ -191,7 +199,7 @@ console.log(getSelection);
 */
 //var select = document.getElementById('teste');
 	//var value = select.options[select.selectedIndex].value;
-  $('#status').val(); // pt
+  $('#modelo').replace(/['"]+/g,''); // pt
 
 	console.log(this.val); // pt
 

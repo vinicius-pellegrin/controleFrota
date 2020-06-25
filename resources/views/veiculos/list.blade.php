@@ -57,7 +57,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($veiculos as $ve)
-                                  <tr>
+                                  <tr class="clickable-row" data-href="url://">
                                     <td>
                                         {{$ve->id}}
                                     </td>
@@ -97,3 +97,12 @@
 
     </div>
 @endsection
+<script>
+jQuery(document).ready(function($){
+$(".clickable-row").click(function(){
+    window.location = $(this).data("href");
+});
+
+});
+
+</script>
