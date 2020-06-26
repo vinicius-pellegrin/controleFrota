@@ -24,7 +24,7 @@
 						 <div class="row">
 							 <div class="col-sm-6 text-left">
 								 <h5 class="card-category">Total Shipments</h5>
-								 <h2 class="card-title">Performance</h2>
+                             <h2 class="card-title">Performance {{implode(',',$veiculo)}}</h2>
 							 </div>
 							 <div class="col-sm-6">
 								 <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
@@ -101,6 +101,7 @@
 
 
 @endsection
+
 @push('js')
 <!-- scripts dos graficos {{--
 	<script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script>
@@ -232,9 +233,9 @@ var map, infoWindow, mapOptions;
             zeroLineColor: "transparent",
           },
           ticks: {
-            suggestedMin: 60,
-            suggestedMax: 120,
-            padding: 20,
+            suggestedMin: 1,
+            suggestedMax: 30,
+            padding: 1,
             fontColor: "#9e9e9e"
           }
         }],
@@ -260,8 +261,8 @@ var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
 gradientStroke.addColorStop(1, 'rgba(29,140,248,0.2)');
 gradientStroke.addColorStop(0.4, 'rgba(29,140,248,0.0)');
 gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
-var veiculo ='@foreach ($veiculos as $ve) {{$ve->modelo}} @endforeach';
-//var veiculo = [];
+//var veiculo =['@foreach ($veiculos as $ve) {{$ve->modelo}} @endforeach'];
+//var veiculo [] = $veiculo;
     var myChart = new Chart(ctx, {
       type: 'bar',
       responsive: true,
@@ -270,17 +271,19 @@ var veiculo ='@foreach ($veiculos as $ve) {{$ve->modelo}} @endforeach';
       },
       data: {
 
-        labels: [veiculo],
+        //labels: [veiculo.valueOf()],
+        labels:[ {!! implode(',',$veiculo) !!} ],
         datasets: [{
-          label: "PErformance",
+          label: "Rodou",
           fill: true,
           backgroundColor: gradientStroke,
           hoverBackgroundColor: gradientStroke,
           borderColor: '#1f8ef1',
           borderWidth: 2,
           borderDash: [],
-          borderDashOffset: 0.0,
-          data: [53, 20, 10, 80, 100, 45],
+          borderDashOffset: 1.5,
+          data: [30, 20, 10],
+
         }]
       },
       options: gradientBarChartConfiguration

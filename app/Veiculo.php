@@ -14,5 +14,26 @@ public function veiculo_abastecimentos(){
         return $this->hasMany('App\Abastecimento');
 
 }
+
+public static function pegaVeiculos(){
+    $veiculo = Veiculo::all();
+    if($veiculo->count()){
+        $modelos=[];
+        foreach ($veiculo as $key => $valor) {
+         //$formata_modelo = str_split($valor);
+            $modelos[] ="'".$valor['modelo']."'";
+
+
+        }
+       return $modelos;
+    }else{
+        return null;
+    }
+
+
+
+    return $veiculo;
+}
+
 }
 

@@ -51,7 +51,7 @@ class AbastecimentoController extends Controller
     public function list()
     {
         $veiculos = Veiculo::all();
-
+        $kmpercorrido = Abastecimento::pegaKM();
         $abastecimentos = Abastecimento::all();
         return view('abastecimentos.list',['abastecimentos'=>$abastecimentos],['veiculos'=>$veiculos]);
         //return view('dashboard');

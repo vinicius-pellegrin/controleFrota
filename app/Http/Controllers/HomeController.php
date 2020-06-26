@@ -31,7 +31,12 @@ class HomeController extends Controller
         $emUso = Veiculo::where('status','=','U')->count();
         $pneulist = Pneu::all();
 
-        return view('home',compact('totalVeiculo','pneulist','emManutencao','disponivel','emUso'),['veiculos'=>$veiculos]);
+
+
+        $veiculo = Veiculo::pegaVeiculos();
+
+
+        return view('home',compact('totalVeiculo','pneulist','emManutencao','disponivel','emUso','veiculo'),['veiculos'=>$veiculos]);
         //return view('dashboard');
     }
 
