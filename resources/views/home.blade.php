@@ -282,7 +282,7 @@ gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
           borderWidth: 2,
           borderDash: [],
           borderDashOffset: 1.5,
-          data: [30, 20, 10],
+          data: [30, 20, 10,100],
 
         }]
       },
